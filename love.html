@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>For You, QT </title>
+<style>
+:root{--bg:#fff1f3;--card:#fffdf9;--ink:#4a2c2a;--accent:#d6455d;--fur:#c58a5a;--fur2:#e6b98f;--bubble:#fff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#2a1519;--card:#3a2024;--ink:#fbe9e7;--accent:#ff8097;--bubble:#4a2a2f}}
+:root[data-theme="dark"]{--bg:#2a1519;--card:#3a2024;--ink:#fbe9e7;--accent:#ff8097;--bubble:#4a2a2f}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,'Times New Roman',serif;text-align:center;padding:20px 16px 40px;min-height:100vh}
+h1{font-size:1.5rem;margin:8px 0 0}
+.sub{font-size:.9rem;opacity:.75;margin:4px 0 0}
+.bubble{background:var(--bubble);border:2px solid var(--accent);border-radius:18px;padding:10px 14px;margin:18px auto 0;max-width:300px;min-height:44px;font-size:1rem;position:relative;display:flex;align-items:center;justify-content:center}
+.bubble:after{content:"";position:absolute;bottom:-12px;left:50%;margin-left:-10px;border:10px solid transparent;border-top-color:var(--accent);border-bottom:0}
+svg{width:240px;max-width:75vw;margin-top:22px;cursor:pointer;-webkit-tap-highlight-color:transparent;overflow:visible}
+.wiggle{animation:wig .6s}
+@keyframes wig{0%,100%{transform:rotate(0)}20%{transform:rotate(-8deg) scale(1.04)}40%{transform:rotate(8deg) scale(1.04)}60%{transform:rotate(-5deg)}80%{transform:rotate(5deg)}}
+.eye{animation:blink 4s infinite;transform-origin:center;transform-box:fill-box}
+@keyframes blink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}
+.float{animation:fl 3s ease-in-out infinite}
+@keyframes fl{50%{transform:translateY(-6px)}}
+button{margin-top:22px;background:var(--accent);color:#fff;border:0;border-radius:999px;padding:14px 26px;font:inherit;font-size:1.05rem;cursor:pointer}
+.letter{display:none;background:var(--card);border-radius:14px;box-shadow:0 6px 24px rgba(0,0,0,.15);margin:26px auto 0;max-width:360px;padding:26px 22px;text-align:left;line-height:1.6;animation:pop .7s}
+.letter.show{display:block}
+@keyframes pop{from{opacity:0;transform:translateY(20px) scale(.96)}}
+.letter h2{margin:0 0 12px;color:var(--accent);font-size:1.3rem}
+.letter p{margin:0 0 12px}
+.hint{font-size:.8rem;opacity:.6;margin-top:10px}
+#gift{margin:70px auto 0;width:220px;height:200px;cursor:pointer;position:relative;animation:shake 2.2s infinite;-webkit-tap-highlight-color:transparent}
+#gift .box{position:absolute;bottom:0;left:10px;width:200px;height:130px;background:#d6455d;border-radius:6px}
+#gift .box:before,#gift .lid:before{content:"";position:absolute;left:50%;width:30px;margin-left:-15px;top:0;bottom:0;background:#ffd166}
+#gift .lid{position:absolute;bottom:130px;left:0;width:220px;height:40px;background:#e8647a;border-radius:6px;transition:transform .8s,opacity .8s}
+#gift .lid:after{content:"🎀";position:absolute;left:50%;top:-34px;margin-left:-22px;font-size:44px}
+#gift.opened{animation:none}
+#gift.opened .lid{transform:translateY(-130px) rotate(-28deg);opacity:0}
+#gift.opened .box{opacity:0;transition:opacity .8s .2s}
+@keyframes shake{0%,85%,100%{transform:rotate(0)}89%{transform:rotate(-5deg)}93%{transform:rotate(5deg)}97%{transform:rotate(-3deg)}}
+#stage.pop{animation:jump .9s}
+@keyframes jump{0%{transform:translateY(140px) scale(.3);opacity:0}60%{transform:translateY(-18px) scale(1.06);opacity:1}100%{transform:none}}
+#giftwrap p{font-size:1.05rem;margin-top:18px}
+</style>
+</head>
+<body>
+<div id="giftwrap">
+<h1>Something special for you, QT 🎁</h1>
+<div id="gift" role="button" aria-label="Open the gift"><div class="lid"></div><div class="box"></div></div>
+<p>Tap the gift to open it 👆</p>
+</div>
+<div id="stage" style="display:none">
+<h1>A little delivery for you 🧸</h1>
+<p class="sub">from Nana Osei Mensah</p>
+<div class="bubble" id="say">Psst… tap me. I’m ticklish.</div>
+
+<svg id="bear" viewBox="0 0 200 230" aria-label="Teddy bear in a doctor’s coat">
+<g class="float">
+<circle cx="45" cy="45" r="24" fill="#c58a5a"/><circle cx="45" cy="45" r="12" fill="#e6b98f"/>
+<circle cx="155" cy="45" r="24" fill="#c58a5a"/><circle cx="155" cy="45" r="12" fill="#e6b98f"/>
+<ellipse cx="100" cy="175" rx="55" ry="48" fill="#c58a5a"/>
+<path d="M62 150 L100 205 L138 150 Q100 135 62 150Z" fill="#fff" stroke="#ddd"/>
+<ellipse cx="45" cy="170" rx="16" ry="30" fill="#c58a5a" transform="rotate(25 45 170)"/>
+<ellipse cx="155" cy="170" rx="16" ry="30" fill="#c58a5a" transform="rotate(-25 155 170)"/>
+<ellipse cx="70" cy="218" rx="22" ry="12" fill="#c58a5a"/><ellipse cx="130" cy="218" rx="22" ry="12" fill="#c58a5a"/>
+<path d="M78 148 Q70 185 100 188 Q130 185 122 148" fill="none" stroke="#555" stroke-width="3"/>
+<circle cx="100" cy="190" r="6" fill="#999" stroke="#555" stroke-width="2"/>
+<circle cx="100" cy="85" r="58" fill="#c58a5a"/>
+<ellipse cx="100" cy="105" rx="26" ry="20" fill="#e6b98f"/>
+<ellipse cx="100" cy="97" rx="9" ry="6" fill="#4a2c2a"/>
+<path id="mouth" d="M88 112 Q100 124 112 112" fill="none" stroke="#4a2c2a" stroke-width="3" stroke-linecap="round"/>
+<ellipse class="eye" cx="78" cy="78" rx="6" ry="8" fill="#4a2c2a"/>
+<ellipse class="eye" cx="122" cy="78" rx="6" ry="8" fill="#4a2c2a"/>
+<circle cx="62" cy="100" r="8" fill="#ff9aa8" opacity=".6"/><circle cx="138" cy="100" r="8" fill="#ff9aa8" opacity=".6"/>
+<path d="M90 30 L110 30 L100 40Z" fill="#d6455d"/><rect x="92" y="22" width="16" height="8" rx="2" fill="#fff"/>
+<path d="M100 22v8M96 26h8" stroke="#d6455d" stroke-width="2"/>
+</g>
+</svg>
+<p class="hint" id="hint">Tap the bear a few times 😄</p>
+
+<button id="open">Open your letter 💌</button>
+
+<div class="letter" id="letter">
+<h2>For You, QT ❤️</h2>
+<p>I wish I could send you flowers, but distance makes that a little difficult. So, for now, let this little teddy bear remind you that you deserve beautiful things, beautiful moments, and endless reasons to smile.</p>
+<p>On the days when life feels overwhelming, remember how far you’ve already come and how much strength you’ve shown.</p>
+<p>I’m always praying for you, and I’m here whenever you need someone. You don’t have to face everything alone.</p>
+<p>I hope this little surprise brings a smile to your face and makes your day a little brighter. ❤️</p>
+<p>With warm wishes, 🌹</p>
+</div>
+
+</div>
+<script>
+var lines=[
+"Hug delivery! No refunds, no returns.",
+"Diagnosis: you are 100% too awesome. 🩺",
+"I’m a bear of very little brain but I know you’ll ace this.",
+"Stethoscope? Check. Fluff? Check. Medical license? Working on it.",
+"Prescription: 2 hugs, 1 snack, 8 hours of sleep.",
+"Flowers were too expensive. I’m cheaper. I only cost honey.",
+"Please don’t quiz me. I only know the bear necessities. 🐻",
+"My heart rate is 200 whenever you walk in. That’s normal… right?",
+"Studying hard? Good. Now blink. Drink water. Hi. 💧",
+"Future Dr. QT? I’ll be your first patient. I have a fluff-related injury.",
+"Tickle detected. Laughing in 3… 2… 1… hehe!"
+];
+document.getElementById('gift').addEventListener('click',function(){
+ var g=this;g.classList.add('opened');
+ setTimeout(function(){
+  document.getElementById('giftwrap').style.display='none';
+  var s=document.getElementById('stage');s.style.display='block';s.classList.add('pop');
+  say.textContent='SURPRISE! 🎉 It’s me, your very own bear!';
+ },1000);
+});
+var n=0,say=document.getElementById('say'),bear=document.getElementById('bear'),mouth=document.getElementById('mouth');
+bear.addEventListener('click',function(){
+ say.textContent=lines[n%lines.length];n++;
+ bear.classList.remove('wiggle');void bear.getBoundingClientRect();bear.classList.add('wiggle');
+ mouth.setAttribute('d','M86 110 Q100 132 114 110Z');
+ setTimeout(function(){mouth.setAttribute('d','M88 112 Q100 124 112 112')},500);
+ if(n>=3)document.getElementById('hint').textContent='Don’t forget to open your letter below 💌';
+});
+document.getElementById('open').addEventListener('click',function(){
+ var l=document.getElementById('letter');l.classList.add('show');
+ say.textContent='Okay okay, the serious part. Read it with a smile! 🧸';
+ this.style.display='none';
+ setTimeout(function(){l.scrollIntoView({behavior:'smooth',block:'center'})},100);
+});
+</script>
+</body>
+</html>
